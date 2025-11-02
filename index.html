@@ -3,25 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adarsh Static Website</title>
+  <title>Adarsh Modern Static Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
   <style>
+    /* 🎨 Modern Color Palette & Typography */
+    :root {
+      --primary-color: #4A90E2; /* A vibrant blue */
+      --secondary-color: #50E3C2; /* A contrasting mint green */
+      --text-dark: #2c3e50; /* Dark, professional text */
+      --text-light: #ecf0f1; /* Light text for dark backgrounds */
+      --background-light: #f4f6f9; /* Light, subtle background */
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif; /* Use the imported modern font */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex; /* Use Flexbox for easy centering */
+      justify-content: center;
+      align-items: center;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+      transition: background-color 0.3s ease;
+    }
+
+    /* 🖼️ Main Container for better structure */
+    .container {
+      background-color: white;
+      padding: 60px 40px;
+      border-radius: 15px; /* Subtle rounded corners */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft, modern shadow */
       text-align: center;
-      margin-top: 100px;
-      background: linear-gradient(to right, #74ebd5, #9face6);
-      color: #222;
+      max-width: 600px;
+      width: 90%;
+      /* Simple modern background element (optional) */
+      border-top: 5px solid var(--primary-color);
     }
+
+    /* ✏️ Typography Styling */
     h1 {
-      font-size: 48px;
+      font-size: 2.8rem; /* Large, bold heading */
+      font-weight: 800; /* Extra bold */
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      letter-spacing: -1px; /* Tighter letter spacing for impact */
     }
+
     p {
-      font-size: 20px;
+      font-size: 1.2rem;
+      font-weight: 300; /* Lighter weight for body text */
+      color: #7f8c8d; /* Muted gray for description */
+      margin-top: 0;
+      line-height: 1.6;
+    }
+
+    /* 🌟 Call to Action Button (Optional but highly recommended for modernity) */
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: white;
+      background-color: var(--secondary-color);
+      border-radius: 50px; /* Pill-shaped button */
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(80, 227, 194, 0.4);
+    }
+
+    .btn:hover {
+      background-color: #4ADBC6; /* Slightly darker on hover */
+      box-shadow: 0 8px 20px rgba(80, 227, 194, 0.6);
+      transform: translateY(-2px); /* Subtle lift on hover */
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Adarsh’s Static Website</h1>
-  <p>For Demo</p>
+  <div class="container">
+    <h1>Adarsh's Project Showcase</h1>
+    <p>
+      This is a **modern static website** demo, built with a clean aesthetic, a great color palette, and engaging typography for an excellent user experience.
+    </p>
+    <a href="#" class="btn">Learn More About This Demo</a>
+  </div>
 </body>
 </html>
