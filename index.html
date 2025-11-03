@@ -3,90 +3,184 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adarsh Modern Static Website</title>
+  <title>Adarsh Portfolio — Modern Static Site</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
   <style>
-    /* 🎨 Modern Color Palette & Typography */
-    :root {
-      --primary-color: #4A90E2; /* A vibrant blue */
-      --secondary-color: #50E3C2; /* A contrasting mint green */
-      --text-dark: #2c3e50; /* Dark, professional text */
-      --text-light: #ecf0f1; /* Light text for dark backgrounds */
-      --background-light: #f4f6f9; /* Light, subtle background */
-    }
-
+    /* 🎨 Modern Animated Background */
     body {
-      font-family: 'Poppins', sans-serif; /* Use the imported modern font */
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      display: flex; /* Use Flexbox for easy centering */
+      display: flex;
       justify-content: center;
       align-items: center;
-      background-color: var(--background-light);
-      color: var(--text-dark);
-      transition: background-color 0.3s ease;
+      box-sizing: border-box;
+      /* Animated gradient background for depth */
+      background: linear-gradient(120deg, #4A90E2, #50E3C2, #f4f6f9);
+      background-size: 400% 400%;
+      animation: gradientMove 13s ease infinite;
+      transition: background 0.3s;
+    }
+    @keyframes gradientMove {
+      0%,100% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
     }
 
-    /* 🖼️ Main Container for better structure */
+    /* 🖼 Container with subtle elevation and animation */
     .container {
-      background-color: white;
-      padding: 60px 40px;
-      border-radius: 15px; /* Subtle rounded corners */
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft, modern shadow */
+      background: rgba(255, 255, 255, 0.98);
+      padding: 48px 32px;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px 0 rgba(50, 90, 150, 0.11), 0 1.5px 4px 0 rgba(80, 227, 194, 0.09);
       text-align: center;
-      max-width: 600px;
-      width: 90%;
-      /* Simple modern background element (optional) */
-      border-top: 5px solid var(--primary-color);
+      max-width: 480px;
+      width: 94%;
+      border-top: 5px solid #4A90E2;
+      position: relative;
+      transition: box-shadow 0.22s;
+    }
+    .container:focus-within, .container:hover {
+      box-shadow: 0 14px 47px 0 rgba(50, 90, 150, 0.19), 0 2px 8px 0 rgba(80, 227, 194, 0.14);
     }
 
-    /* ✏️ Typography Styling */
+    /* 👤 Profile avatar */
+    .avatar {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      margin-bottom: 1.3rem;
+      box-shadow: 0 2px 8px rgba(80, 227, 194, 0.12);
+      border: 3px solid #4A90E2;
+      object-fit: cover;
+      background: #f4f6f9;
+      transition: border 0.23s;
+    }
+    .container:hover .avatar, .container:focus-within .avatar {
+      border-color: #50E3C2;
+    }
+
+    /* ✏️ Typography */
     h1 {
-      font-size: 2.8rem; /* Large, bold heading */
-      font-weight: 800; /* Extra bold */
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-      letter-spacing: -1px; /* Tighter letter spacing for impact */
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: #4A90E2;
+      margin: 0;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
     }
-
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 20px 0 10px;
+      color: #2c3e50;
+    }
     p {
-      font-size: 1.2rem;
-      font-weight: 300; /* Lighter weight for body text */
-      color: #7f8c8d; /* Muted gray for description */
-      margin-top: 0;
+      font-size: 1.08rem;
+      font-weight: 300;
+      color: #7f8c8d;
+      margin-top: 0.8rem;
       line-height: 1.6;
+      margin-bottom: 18px;
     }
 
-    /* 🌟 Call to Action Button (Optional but highly recommended for modernity) */
+    /* ⭐ Feature list */
+    .project-list {
+      text-align: left;
+      padding: 0;
+      margin: 0 0 18px 0;
+      list-style: none;
+    }
+    .project-list li {
+      padding: 10px 0 10px 44px;
+      position: relative;
+      font-size: 1.02rem;
+      color: #2c3e50;
+      font-weight: 400;
+    }
+    .project-list li:before {
+      content: '✔';
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      color: #50E3C2;
+      font-size: 1.12em;
+      transform: translateY(-50%);
+    }
+
+    /* 🌟 Modern button with ripple effect */
     .btn {
       display: inline-block;
-      margin-top: 25px;
-      padding: 12px 30px;
-      font-size: 1rem;
+      margin-top: 18px;
+      padding: 13px 34px;
+      font-size: 1.06rem;
       font-weight: 600;
+      letter-spacing: 0.03em;
+      color: #fff;
+      background-color: #50E3C2;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      box-shadow: 0 4px 14px rgba(80, 227, 194, 0.18);
+      cursor: pointer;
       text-decoration: none;
-      color: white;
-      background-color: var(--secondary-color);
-      border-radius: 50px; /* Pill-shaped button */
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(80, 227, 194, 0.4);
+      transition: background 0.23s, color 0.18s, transform 0.17s;
+      position: relative;
+    }
+    .btn:focus, .btn:hover {
+      background-color: #4ADBC6;
+      color: #263238;
+      transform: translateY(-2px) scale(1.025);
     }
 
-    .btn:hover {
-      background-color: #4ADBC6; /* Slightly darker on hover */
-      box-shadow: 0 8px 20px rgba(80, 227, 194, 0.6);
-      transform: translateY(-2px); /* Subtle lift on hover */
+    /* 🔗 Social links row */
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 17px;
+      margin: 22px 0 0;
+    }
+    .social a {
+      color: #4A90E2;
+      opacity: 0.7;
+      font-size: 1.18rem;
+      border-radius: 50%;
+      padding: 7px;
+      transition: opacity 0.19s, background 0.23s;
+      background: none;
+      text-decoration: none;
+    }
+    .social a:focus, .social a:hover {
+      background: #e8f7fa;
+      opacity: 1;
+      outline: 2px solid #50E3C2;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 20px 5vw; }
+      h1 { font-size: 1.49rem; }
+      .avatar { width: 55px; height: 55px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <main class="container" tabindex="0">
+    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Adarsh's Avatar" class="avatar" loading="lazy" />
     <h1>Adarsh's Project Showcase</h1>
     <p>
-      This is a **modern static website** demo, built with a clean aesthetic, a great color palette, and engaging typography for an excellent user experience.
+      Welcome to a realistic portfolio demo — where creativity meets technology! This page blends a lively modern design, clean UI, and a focus on clarity to provide an excellent first impression.
     </p>
-    <a href="#" class="btn">Learn More About This Demo</a>
-  </div>
+    <h2>Selected Works</h2>
+    <ul class="project-list">
+      <li>Responsive static websites built from scratch</li>
+      <li>Interactive UI components & landing pages</li>
+      <li>AI-powered content generation demos</li>
+    </ul>
+    <a href="#" class="btn" aria-label="Read more about Adarsh's projects">Learn More About This Demo</a>
+    <nav class="social" aria-label="Social Links">
+      <a href="https://github.com/" target="_blank" aria-label="Github" rel="noopener">G</a>
+      <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn" rel="noopener">L</a>
+      <a href="mailto:hello@adarsh.dev" aria-label="Email">E</a>
+    </nav>
+  </main>
 </body>
 </html>
