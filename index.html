@@ -3,23 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adarsh Bhavimane — DevOps & Design</title>
+  <title>Adarsh Bhavimane — DevOps Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
+    /* 🌌 Background with dynamic grid */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(120deg, #4A90E2, #50E3C2, #6A5ACD, #00C9A7);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      color: #fff;
+      background: radial-gradient(circle at top left, #101820, #050A0F);
+      color: #EAF7FA;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
-    @keyframes gradientShift {
-      0%,100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+
+    /* Animated grid overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+                        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: moveGrid 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveGrid {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 40px 40px, 40px 40px; }
     }
 
     main {
@@ -27,28 +41,37 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 40px 20px 10px;
-      min-height: 80vh;
+      padding: 80px 20px 50px;
+      min-height: 90vh;
+      position: relative;
     }
 
+    /* ✨ Container with soft neon border */
     .container {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(15px);
-      border-radius: 20px;
-      padding: 35px 25px 25px;
+      background: rgba(20, 30, 40, 0.75);
+      border-radius: 18px;
+      padding: 40px 25px;
       max-width: 640px;
       width: 100%;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(80, 227, 194, 0.3);
+      box-shadow: 0 0 25px rgba(80, 227, 194, 0.15);
       transition: all 0.3s ease;
+      backdrop-filter: blur(12px);
     }
 
+    .container:hover {
+      box-shadow: 0 0 40px rgba(80, 227, 194, 0.3);
+      transform: translateY(-3px);
+    }
+
+    /* 👤 Avatar */
     .avatar {
       width: 110px;
       height: 110px;
       border-radius: 50%;
       border: 3px solid #50E3C2;
       object-fit: cover;
-      box-shadow: 0 0 25px rgba(80, 227, 194, 0.4);
+      box-shadow: 0 0 35px rgba(80, 227, 194, 0.3);
       margin-bottom: 1rem;
       animation: float 3.5s ease-in-out infinite;
     }
@@ -59,132 +82,153 @@
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 800;
       background: linear-gradient(90deg, #50E3C2, #4A90E2);
       -webkit-background-clip: text;
-      background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 0.3rem;
+      margin: 0;
     }
 
     h2 {
       font-weight: 500;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       opacity: 0.9;
-      margin-top: 0;
+      margin-top: 8px;
+      color: #A9BDC8;
     }
 
     p {
       font-weight: 300;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.7;
-      margin: 15px auto;
-      max-width: 500px;
+      color: #A7C7C7;
+      line-height: 1.8;
+      margin: 18px auto 25px;
+      max-width: 520px;
     }
 
+    /* ⚙️ DevOps feature list */
     ul.project-list {
       list-style: none;
       padding: 0;
-      margin: 25px 0;
+      margin: 25px auto;
       text-align: left;
       max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     ul.project-list li {
-      margin: 10px 0;
+      margin: 12px 0;
       padding-left: 28px;
       position: relative;
-      font-size: 1rem;
+      font-size: 1.05rem;
+      color: #D9F7EE;
     }
 
     ul.project-list li:before {
-      content: "⚙️";
+      content: "🟢";
       position: absolute;
       left: 0;
+      font-size: 0.9rem;
     }
 
+    /* 🚀 Call-to-action button */
     .btn {
       background: linear-gradient(90deg, #50E3C2, #4A90E2);
       color: #fff;
-      padding: 12px 30px;
+      padding: 12px 36px;
       border-radius: 999px;
       border: none;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       transition: transform 0.25s, box-shadow 0.25s;
-      box-shadow: 0 0 18px rgba(80, 227, 194, 0.4);
+      box-shadow: 0 0 18px rgba(80, 227, 194, 0.35);
       text-decoration: none;
       display: inline-block;
-      margin-bottom: 1.5rem;
     }
 
     .btn:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 0 35px rgba(80, 227, 194, 0.7);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 30px rgba(80, 227, 194, 0.6);
     }
 
+    /* 🌐 Social Icons */
     .social {
+      margin-top: 28px;
       display: flex;
       justify-content: center;
-      gap: 22px;
+      gap: 25px;
       flex-wrap: wrap;
-      margin-top: 25px;
     }
 
     .social a {
-      color: #fff;
-      font-size: 1.5rem;
+      color: #50E3C2;
+      font-size: 1.6rem;
       transition: transform 0.3s ease, color 0.3s ease;
+      background: rgba(80, 227, 194, 0.05);
+      padding: 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(80, 227, 194, 0.3);
     }
 
     .social a:hover {
-      color: #50E3C2;
+      color: #4A90E2;
       transform: scale(1.25);
-      text-shadow: 0 0 10px #50E3C2;
+      box-shadow: 0 0 15px rgba(80, 227, 194, 0.5);
     }
 
+    /* 🧱 Projects section */
     section.gallery {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
-      padding: 50px 20px;
+      gap: 25px;
+      padding: 60px 20px;
     }
 
     .card {
       width: 290px;
-      min-height: 160px;
+      min-height: 170px;
       border-radius: 15px;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(80,227,194,0.25);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       backdrop-filter: blur(10px);
       cursor: pointer;
       overflow: hidden;
+      position: relative;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at top right, rgba(80,227,194,0.15), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover::after {
+      opacity: 1;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 40px rgba(80, 227, 194, 0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 18px 45px rgba(80, 227, 194, 0.3);
     }
 
     .card h3 {
       margin: 0;
-      font-size: 1.1rem;
-      color: #fff;
-      padding: 1.1rem;
-      background: linear-gradient(90deg, rgba(80,227,194,0.3), rgba(74,144,226,0.3));
+      font-size: 1.15rem;
+      color: #50E3C2;
+      padding: 1rem 1.2rem 0.5rem;
     }
 
     .card p {
       font-size: 0.95rem;
-      padding: 0.9rem 1rem;
-      color: rgba(255,255,255,0.9);
+      padding: 0 1.2rem 1rem;
+      color: #CFEFED;
       line-height: 1.6;
     }
 
@@ -192,7 +236,7 @@
       text-align: center;
       padding: 25px;
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.7);
     }
 
     @media (max-width: 700px) {
@@ -210,19 +254,18 @@
       <h1>Adarsh Bhavimane</h1>
       <h2>DevOps Engineer | Designer | Builder</h2>
       <p>
-        Bridging creativity and infrastructure — designing experiences and automations that just work, beautifully and efficiently.
+        Automating creativity — building reliable, scalable systems with the precision of an engineer and the curiosity of a designer.
       </p>
 
       <ul class="project-list">
-        <li>CI/CD automation with Jenkins, AWS & Docker</li>
-        <li>Terraform deployments with modular scalability</li>
-        <li>Interactive UIs and lightweight static web builds</li>
+        <li>CI/CD pipelines with Jenkins, GitHub Actions & AWS</li>
+        <li>Containerized environments using Docker & Terraform</li>
+        <li>Modern UI deployments through CloudFront + S3</li>
       </ul>
 
-      <a href="#projects" class="btn">Explore My Work</a>
+      <a href="#projects" class="btn">View My Projects</a>
     </div>
 
-    <!-- ✅ Social icons moved outside container for better visibility -->
     <div class="social">
       <a href="https://github.com/bhatadarsh" target="_blank"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/adarshbhavimane" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -233,20 +276,20 @@
   <section id="projects" class="gallery">
     <div class="card">
       <h3>🚀 DevOps Pipeline</h3>
-      <p>Fully automated CI/CD setup using Jenkins and EC2 — seamless deployment with zero downtime.</p>
+      <p>CI/CD automation using Jenkins & EC2 — with zero downtime deploys, infrastructure versioning, and rollback safety.</p>
     </div>
     <div class="card">
       <h3>🌐 Static Site Hosting</h3>
-      <p>Deployed responsive portfolio with S3 & CloudFront for fast, secure global delivery.</p>
+      <p>Fully automated S3 + CloudFront setup — HTTPS, caching, and instant global availability for any static app.</p>
     </div>
     <div class="card">
       <h3>🧩 Terraform Infra</h3>
-      <p>Infrastructure-as-Code configuration managing scalable AWS environments effortlessly.</p>
+      <p>Infrastructure as Code approach — spinning scalable AWS infra with modular reusable templates.</p>
     </div>
   </section>
 
   <footer>
-    © 2025 Adarsh Bhavimane — Crafted with DevOps precision and design passion.
+    © 2025 Adarsh Bhavimane — Engineered for performance. Designed for people.
   </footer>
 
 </body>
