@@ -1,297 +1,232 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Adarsh Bhavimane — DevOps Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta name="description" content="Adarsh Bhavimane — DevOps Engineer. CI/CD, Cloud infra, Terraform, Docker. Built for performance, designed for people." />
+  <meta property="og:title" content="Adarsh Bhavimane — DevOps Engineer" />
+  <meta property="og:description" content="CI/CD, Terraform, Docker — engineering systems with design sense." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
   <style>
-    /* 🌌 Background with dynamic grid */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top left, #101820, #050A0F);
-      color: #EAF7FA;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+    :root{
+      --bg-1:#05060a; --bg-2:#071424;
+      --accent-1:#50E3C2; --accent-2:#4A90E2; --muted:#A7C7C7;
+      --glass: rgba(255,255,255,0.04);
+      --card: rgba(255,255,255,0.03);
+      --radius:16px;
+      --max-width:1100px;
     }
 
-    /* Animated grid overlay */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-                        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: moveGrid 20s linear infinite;
-      z-index: -1;
+    /* Reset + sensible defaults */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; 
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(74,144,226,0.06), transparent),
+                  radial-gradient(800px 400px at 90% 90%, rgba(80,227,194,0.025), transparent),
+                  linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      color:#EAF7FA; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale; overflow-x:hidden;
     }
 
-    @keyframes moveGrid {
-      from { background-position: 0 0, 0 0; }
-      to { background-position: 40px 40px, 40px 40px; }
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+    /* Page layout */
+    .wrap{max-width:var(--max-width);margin:36px auto;padding:28px;display:grid;grid-template-columns: 420px 1fr;gap:32px;align-items:start}
+    @media(max-width:980px){.wrap{grid-template-columns:1fr;padding:18px} .hero {order: -1}}
+
+    /* LEFT: hero card */
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:calc(var(--radius) + 8px); padding:28px; border:1px solid rgba(80,227,194,0.08);
+      box-shadow:0 10px 40px rgba(10,12,14,0.6); position:relative; overflow:hidden;
+      backdrop-filter: blur(8px);
     }
 
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 80px 20px 50px;
-      min-height: 90vh;
-      position: relative;
-    }
+    .accent-ring{position:absolute;inset:-25%;background:conic-gradient(from 120deg,var(--accent-1),var(--accent-2),transparent);filter:blur(80px);opacity:0.12;transform:rotate(25deg)}
 
-    /* ✨ Container with soft neon border */
-    .container {
-      background: rgba(20, 30, 40, 0.75);
-      border-radius: 18px;
-      padding: 40px 25px;
-      max-width: 640px;
-      width: 100%;
-      border: 1px solid rgba(80, 227, 194, 0.3);
-      box-shadow: 0 0 25px rgba(80, 227, 194, 0.15);
-      transition: all 0.3s ease;
-      backdrop-filter: blur(12px);
-    }
+    .avatar{display:block;width:132px;height:132px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.06);box-shadow:0 12px 30px rgba(40,50,60,0.6);}
+    .hero h1{margin:14px 0 4px;font-size:1.6rem;letter-spacing:-0.01em}
+    .hero h2{margin:0;font-weight:500;color:var(--muted);font-size:0.95rem}
+    .tagline{margin-top:14px;color:var(--muted);line-height:1.6}
 
-    .container:hover {
-      box-shadow: 0 0 40px rgba(80, 227, 194, 0.3);
-      transform: translateY(-3px);
-    }
+    .badges{display:flex;gap:8px;margin:18px 0;flex-wrap:wrap}
+    .badge{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:600;font-size:0.9rem;border:1px solid rgba(80,227,194,0.06)}
 
-    /* 👤 Avatar */
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      border: 3px solid #50E3C2;
-      object-fit: cover;
-      box-shadow: 0 0 35px rgba(80, 227, 194, 0.3);
-      margin-bottom: 1rem;
-      animation: float 3.5s ease-in-out infinite;
-    }
+    .cta-row{display:flex;gap:12px;margin-top:14px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;border:none;cursor:pointer;font-weight:700;text-decoration:none}
+    .btn-primary{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#022;box-shadow:0 8px 30px rgba(74,144,226,0.12)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+    .socials{display:flex;gap:10px;margin-top:18px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;padding:10px;border-radius:8px;border:1px solid rgba(80,227,194,0.06);min-width:44px}
 
-    h1 {
-      font-size: 2.3rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #50E3C2, #4A90E2);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0;
-    }
+    /* RIGHT: content */
+    .content{padding:18px 8px}
+    .kpi-row{display:flex;gap:18px;margin-bottom:16px}
+    .kpi{background:var(--card);padding:18px;border-radius:12px;flex:1;border:1px solid rgba(255,255,255,0.03);}
+    .kpi h3{margin:0;font-size:1.05rem;color:var(--accent-1)}
+    .kpi p{margin:8px 0 0;color:var(--muted)}
 
-    h2 {
-      font-weight: 500;
-      font-size: 1.15rem;
-      opacity: 0.9;
-      margin-top: 8px;
-      color: #A9BDC8;
-    }
+    /* PROJECTS grid */
+    .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:14px}
+    @media(max-width:760px){.projects{grid-template-columns:1fr}}
 
-    p {
-      font-weight: 300;
-      color: #A7C7C7;
-      line-height: 1.8;
-      margin: 18px auto 25px;
-      max-width: 520px;
+    .card{
+      padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(80,227,194,0.06);cursor:default;position:relative;overflow:hidden;transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s
     }
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(10,12,18,0.6)}
+    .card h4{margin:0 0 6px;color:var(--accent-2)}
+    .card p{margin:0;color:var(--muted);font-size:0.95rem}
+    .card .meta{display:flex;gap:8px;margin-top:12px;font-size:0.85rem;color:var(--muted)}
 
-    /* ⚙️ DevOps feature list */
-    ul.project-list {
-      list-style: none;
-      padding: 0;
-      margin: 25px auto;
-      text-align: left;
-      max-width: 400px;
-    }
+    /* animated tech strip */
+    .tech-strip{display:flex;gap:12px;align-items:center;padding:10px 6px;margin-top:18px;overflow:hidden}
+    .tech{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);white-space:nowrap}
 
-    ul.project-list li {
-      margin: 12px 0;
-      padding-left: 28px;
-      position: relative;
-      font-size: 1.05rem;
-      color: #D9F7EE;
-    }
+    /* footer */
+    footer{margin-top:28px;text-align:center;color:rgba(255,255,255,0.6);font-size:0.9rem}
 
-    ul.project-list li:before {
-      content: "🟢";
-      position: absolute;
-      left: 0;
-      font-size: 0.9rem;
-    }
+    /* scroll progress */
+    #progress{position:fixed;left:0;top:0;height:4px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));width:0%;z-index:999}
 
-    /* 🚀 Call-to-action button */
-    .btn {
-      background: linear-gradient(90deg, #50E3C2, #4A90E2);
-      color: #fff;
-      padding: 12px 36px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 1.05rem;
-      font-weight: 600;
-      transition: transform 0.25s, box-shadow 0.25s;
-      box-shadow: 0 0 18px rgba(80, 227, 194, 0.35);
-      text-decoration: none;
-      display: inline-block;
-    }
+    /* subtle floating shapes */
+    .float-shape{position:absolute;border-radius:50%;opacity:0.06;pointer-events:none}
+    .s1{width:260px;height:260px;right:-80px;top:-100px;background:radial-gradient(circle,#50E3C2,#4A90E2)}
+    .s2{width:160px;height:160px;left:-70px;bottom:-80px;background:radial-gradient(circle,#4A90E2,#50E3C2)}
 
-    .btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 0 30px rgba(80, 227, 194, 0.6);
-    }
+    /* utilities */
+    .muted{color:var(--muted)}
 
-    /* 🌐 Social Icons */
-    .social {
-      margin-top: 28px;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .social a {
-      color: #50E3C2;
-      font-size: 1.6rem;
-      transition: transform 0.3s ease, color 0.3s ease;
-      background: rgba(80, 227, 194, 0.05);
-      padding: 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(80, 227, 194, 0.3);
-    }
-
-    .social a:hover {
-      color: #4A90E2;
-      transform: scale(1.25);
-      box-shadow: 0 0 15px rgba(80, 227, 194, 0.5);
-    }
-
-    /* 🧱 Projects section */
-    section.gallery {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px;
-      padding: 60px 20px;
-    }
-
-    .card {
-      width: 290px;
-      min-height: 170px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(80,227,194,0.25);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at top right, rgba(80,227,194,0.15), transparent 70%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .card:hover::after {
-      opacity: 1;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 45px rgba(80, 227, 194, 0.3);
-    }
-
-    .card h3 {
-      margin: 0;
-      font-size: 1.15rem;
-      color: #50E3C2;
-      padding: 1rem 1.2rem 0.5rem;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      padding: 0 1.2rem 1rem;
-      color: #CFEFED;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-    }
-
-    @media (max-width: 700px) {
-      h1 { font-size: 1.9rem; }
-      .avatar { width: 90px; height: 90px; }
-      .card { width: 100%; }
-    }
   </style>
 </head>
 <body>
+  <div id="progress" aria-hidden="true"></div>
 
-  <main>
-    <div class="container">
-      <img src="Adarsh Bhavimane_4AL21CG004.jpg" alt="Adarsh Bhavimane" class="avatar" />
-      <h1>Adarsh Bhavimane</h1>
-      <h2>DevOps Engineer | Designer | Builder</h2>
-      <p>
-        Automating creativity — building reliable, scalable systems with the precision of an engineer and the curiosity of a designer.
-      </p>
+  <main class="wrap" role="main">
+    <section class="hero" aria-labelledby="name">
+      <div class="accent-ring" aria-hidden="true"></div>
+      <img src="Adarsh Bhavimane_4AL21CG004.jpg" alt="Adarsh Bhavimane portrait" class="avatar" loading="lazy" width="132" height="132" />
+      <h1 id="name">Adarsh Bhavimane</h1>
+      <h2 class="muted">DevOps Engineer • Infra as Code • CI/CD • Cloud</h2>
+      <p class="tagline">I automate systems so humans can ship with confidence. Specialties: Jenkins, GitHub Actions, Terraform, Docker, AWS — plus a designer's eye for delightful developer experiences.</p>
 
-      <ul class="project-list">
-        <li>CI/CD pipelines with Jenkins, GitHub Actions & AWS</li>
-        <li>Containerized environments using Docker & Terraform</li>
-        <li>Modern UI deployments through CloudFront + S3</li>
-      </ul>
+      <div class="badges" aria-hidden="false">
+        <span class="badge">Jenkins</span>
+        <span class="badge">Terraform</span>
+        <span class="badge">Docker</span>
+        <span class="badge">AWS</span>
+        <span class="badge">GitHub Actions</span>
+      </div>
 
-      <a href="#projects" class="btn">View My Projects</a>
-    </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#projects" title="See projects">View Projects <i class="fas fa-rocket" style="opacity:.9"></i></a>
+        <a class="btn btn-ghost" href="mailto:bhatadarsh11@gmail.com">Contact</a>
+      </div>
 
-    <div class="social">
-      <a href="https://github.com/bhatadarsh" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/adarshbhavimane" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:bhatadarsh11@gmail.com"><i class="fas fa-envelope"></i></a>
-    </div>
+      <div class="socials">
+        <a title="GitHub" href="https://github.com/bhatadarsh" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        <a title="LinkedIn" href="https://www.linkedin.com/in/adarshbhavimane" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+        <a title="Email" href="mailto:bhatadarsh11@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="float-shape s1" aria-hidden="true"></div>
+      <div class="float-shape s2" aria-hidden="true"></div>
+    </section>
+
+    <section class="content" aria-labelledby="work">
+      <div class="kpi-row">
+        <div class="kpi"><h3>5+</h3><p class="muted">Production CI/CD pipelines</p></div>
+        <div class="kpi"><h3>100+</h3><p class="muted">Terraform resources managed</p></div>
+        <div class="kpi"><h3>99.99%</h3><p class="muted">Uptime focus</p></div>
+      </div>
+
+      <h3 id="work" style="margin-top:2px">Highlighted Work</h3>
+
+      <div class="projects" id="projects">
+        <article class="card" tabindex="0" aria-labelledby="p1">
+          <h4 id="p1">DevOps Pipeline — Zero-downtime</h4>
+          <p>End-to-end Jenkins pipeline (multi-branch) that builds, tests, dockerizes and deploys to blue/green EC2 fleet with automated rollbacks.</p>
+          <div class="meta"><span class="muted">Jenkins • Ansible • Docker</span></div>
+        </article>
+
+        <article class="card" tabindex="0" aria-labelledby="p2">
+          <h4 id="p2">Static Sites (S3 + CloudFront)</h4>
+          <p>Automated builds and invalidations via GitHub Actions. HTTPS, gzip, and immutable caching for fast global delivery.</p>
+          <div class="meta"><span class="muted">CloudFront • S3 • GitHub Actions</span></div>
+        </article>
+
+        <article class="card" tabindex="0" aria-labelledby="p3">
+          <h4 id="p3">Terraform Modules</h4>
+          <p>Modular, reusable infrastructure templates for VPCs, ECS clusters, and secure IAM bindings — DRY and testable.</p>
+          <div class="meta"><span class="muted">Terraform • Terratest • Modules</span></div>
+        </article>
+
+        <article class="card" tabindex="0" aria-labelledby="p4">
+          <h4 id="p4">Containerization & Local DX</h4>
+          <p>Docker-friendly developer environments and compose files that mirror production to reduce "it works on my machine".</p>
+          <div class="meta"><span class="muted">Docker • Compose</span></div>
+        </article>
+      </div>
+
+      <div class="tech-strip" aria-hidden="false">
+        <div class="tech">Terraform</div>
+        <div class="tech">AWS</div>
+        <div class="tech">Docker</div>
+        <div class="tech">Jenkins</div>
+        <div class="tech">GitHub Actions</div>
+        <div class="tech">CloudFront</div>
+        <div class="tech">Ansible</div>
+      </div>
+
+      <footer>
+        © 2025 Adarsh Bhavimane — Engineered for performance. Designed for people.
+      </footer>
+    </section>
   </main>
 
-  <section id="projects" class="gallery">
-    <div class="card">
-      <h3>🚀 DevOps Pipeline</h3>
-      <p>CI/CD automation using Jenkins & EC2 — with zero downtime deploys, infrastructure versioning, and rollback safety.</p>
-    </div>
-    <div class="card">
-      <h3>🌐 Static Site Hosting</h3>
-      <p>Fully automated S3 + CloudFront setup — HTTPS, caching, and instant global availability for any static app.</p>
-    </div>
-    <div class="card">
-      <h3>🧩 Terraform Infra</h3>
-      <p>Infrastructure as Code approach — spinning scalable AWS infra with modular reusable templates.</p>
-    </div>
-  </section>
+  <script>
+    (function(){
+      // scroll progress bar
+      const prog = document.getElementById('progress');
+      function updateProgress(){
+        const h = document.documentElement;
+        const percent = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+        prog.style.width = percent + '%';
+      }
+      document.addEventListener('scroll', updateProgress, {passive:true});
+      updateProgress();
 
-  <footer>
-    © 2025 Adarsh Bhavimane — Engineered for performance. Designed for people.
-  </footer>
+      // small accessible keyboard focus effect on cards
+      document.querySelectorAll('.card').forEach(c=>{
+        c.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){
+            c.classList.toggle('expanded');
+            e.preventDefault();
+          }
+        })
+      });
 
+      // marquee-like tech strip animation (keeps simple and performant)
+      const strip = document.querySelector('.tech-strip');
+      if(strip){
+        let t = 0;
+        function step(){
+          t = (t + 0.15) % (strip.scrollWidth);
+          strip.scrollLeft = Math.floor(t);
+          requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      // small accessibility: prefers-reduced-motion handled via CSS media query
+    })();
+  </script>
 </body>
 </html>
