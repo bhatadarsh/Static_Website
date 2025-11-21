@@ -115,6 +115,7 @@
     
     .gradient-text {
       background: linear-gradient(to right, var(--primary), var(--secondary));
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 0 5px rgba(0, 243, 255, 0.3));
@@ -245,6 +246,7 @@
       padding: 1px; /* Border width */
       background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), var(--primary), transparent 40%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       z-index: 2;
@@ -413,12 +415,12 @@
           <p class="text-muted">Learning container orchestration and diving deeper into AWS networking concepts (VPC, Subnets).</p>
         </div>
         <div class="timeline-item">
-          <div class="year">2024</div>
+          <div class="year">2025</div>
           <h4>Linux & Scripting</h4>
           <p class="text-muted">Mastered the Linux command line, file permissions, and wrote initial Bash automation scripts.</p>
         </div>
         <div class="timeline-item">
-          <div class="year">2023</div>
+          <div class="year">2024</div>
           <h4>Initialization</h4>
           <p class="text-muted">Started coding journey. Explored Python basics and version control with Git.</p>
         </div>
